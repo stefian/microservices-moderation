@@ -5,7 +5,7 @@ const axios = require('axios');
 const app = express();
 app.use(bodyParser.json());
 
-app.post('/events', (req, res) => {
+app.post('/events', async (req, res) => {
   const { type, data } = req.body;
 
   if (type === 'CommentCreated') {
@@ -21,6 +21,8 @@ app.post('/events', (req, res) => {
       }
     });
   }
+  // send the response to the event bus
+  res.send({});
 
 });
 
